@@ -43,6 +43,7 @@ body {
   border-radius: 10rem;
   cursor: pointer;
   transition: all 0.3s;
+  z-index: 5;
 }
 
 .section-break {
@@ -230,6 +231,7 @@ p {
   justify-content: center;
   margin-bottom: 15rem;
   margin-top: 5rem;
+  position: relative;
 }
 
 .content__box {
@@ -237,6 +239,7 @@ p {
   min-height: 31rem;
   background-color: white;
   padding-top: 6rem;
+  position: relative;
 }
 
 .content__box div > p {
@@ -249,6 +252,8 @@ p {
   gap: 2.5rem;
   justify-content: center;
   transform: translateY(2.5rem);
+  position: relative;
+  z-index: 50;
 }
 
 .btn-green {
@@ -293,16 +298,24 @@ p {
 
 .box__content--2 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 6rem;
+  left: 10.8rem;
   z-index: 1;
+}
+
+.box__content--2 > p {
+  margin-left: -13rem;
 }
 
 .box__content--3 {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 6rem;
+  left: 10.8rem;
   z-index: 1;
+}
+
+.box__content--3 > p {
+  margin-left: -13rem;
 }
 
 /* OPERATIONS */
@@ -311,7 +324,7 @@ p {
   max-width: 80rem;
   margin: auto;
   margin-top: 6rem;
-  margin-bottom: 25rem;
+  margin-bottom: 18rem;
 }
 .scrolling__container--1 {
   display: grid;
@@ -322,7 +335,7 @@ p {
 }
 .testimonial {
   font-size: 1.7rem;
-  color: rgb(116, 115, 115);
+  color: rgb(61, 61, 61);
   position: relative;
 }
 
@@ -385,4 +398,82 @@ h6 {
 .slider__btn--right {
   left: 67rem;
   top: -15rem;
+}
+
+.dots__container {
+  margin: auto;
+}
+.dots {
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: #37383d;
+  margin-right: 1.8rem;
+  cursor: pointer;
+}
+
+/* SIGNUP */
+
+#section--4 {
+  border-bottom: 1px solid #444;
+}
+.section__title {
+  text-align: center;
+  background-color: #37383d;
+  padding: 10rem;
+}
+
+.section__title > h3 {
+  color: white;
+  font-size: 4rem;
+  width: 80rem;
+  margin: 0 auto 4rem auto;
+  line-height: 5rem;
+}
+
+.section__title > .btn {
+  font-size: 1.9rem;
+  padding: 2rem 5rem;
+  font-weight: 500;
+}
+
+/* FOOTER */
+.footer {
+  padding: 10rem 3rem;
+  background-color: #37383d;
+}
+
+.footer__nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.footer__item {
+  margin-right: 4rem;
+}
+
+.footer__link {
+  font-size: 1.6rem;
+  color: #eee;
+  text-decoration: none;
+}
+
+.footer__logo {
+  height: 5rem;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.footer__copyright {
+  font-size: 1.4rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.footer__copyright .footer__link {
+  font-size: 1.4rem;
 }
