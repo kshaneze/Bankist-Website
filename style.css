@@ -266,13 +266,29 @@ p {
 .btn-green {
   font-weight: 500;
 }
+
+.btn-green:hover {
+  background-color: var(--color-primary-darker);
+}
 .btn-yellow {
   background-color: var(--color-secondary);
   font-weight: 500;
 }
+
+.btn-yellow:hover {
+  background-color: var(--color-secondary-darker);
+}
 .btn-red {
   background-color: var(--color-tertiary);
   font-weight: 500;
+}
+
+.btn-red:hover {
+  background-color: var(--color-tertiary-darker);
+}
+
+.active-box {
+  transform: translateY(-9px);
 }
 
 .svg__div--yellow {

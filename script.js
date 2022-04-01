@@ -47,7 +47,6 @@ const header = document.querySelector('.section__header');
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
 
   if (!entry.isIntersecting) nav__bar.classList.add('sticky__nav');
   else nav__bar.classList.remove('sticky__nav');
@@ -60,3 +59,27 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 });
 
 headerObserver.observe(header);
+
+// Tabbed components
+
+const tabContainer = document.querySelector('.content__box-container');
+
+tabContainer.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const clickButton = e.target.closest('.btn');
+
+  const clicked = e.target;
+
+  const buttons = clicked
+    .closest('.content__box-buttons')
+    .querySelectorAll('.btn');
+
+  buttons.forEach(button => {
+    if (clicked === button) {
+      button.classList.add('active-box');
+    } else {
+      button.classList.remove('active-box');
+    }
+  });
+});
