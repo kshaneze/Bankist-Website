@@ -6,20 +6,62 @@ const nav__bar = document.querySelector('.nav-bar');
 const list = document.querySelectorAll('li');
 const nav__link = document.querySelector('.nav__link');
 
-nav__bar.addEventListener('mouseover', function (e) {
-  const mouseOvered = e.target;
+// Selecting every element in navbar, except the one that is mouseovered,  and chaging opacity so we get this amazing effect
 
-  document.querySelectorAll('.nav__link').forEach(li => {
-    li.style.opacity = 0.5;
+const mouseHandler = function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains('nav__link')) {
+    const clicked = e.target;
+
+    const links = clicked.closest('.nav-bar').querySelectorAll('.nav__link');
+    const logo = clicked.closest('.nav-bar').querySelector('.navbar__logo');
+
+    links.forEach(el => {
+      if (el !== clicked) el.style.opacity = this;
+    });
+
+    logo.style.opacity = this;
+  }
+};
+
+nav__bar.addEventListener('mouseover', mouseHandler.bind(0.5));
+
+// This function just brings everything back to normal as soon as we leave navbar
+nav__bar.addEventListener('mouseout', mouseHandler.bind(1));
+
+// Smooth scrolling
+const links = document.querySelectorAll('a[href^="#"]');
+
+links.forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    document
+      .querySelector(this.getAttribute('href'))
+      .scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-// nav__bar.addEventListener('mouseout', function (e) {
-//   const mouseOvered = e.target;
-//   document.querySelectorAll('li').forEach(li => {
-//     mouseOvered.style.opacity = 1;
-//     li.style.opacity = 1;
-//   });
-// });
-
 // Sticky Navigation
+
+const header = document.querySelector('.section__header');
+
+let callBack = function (entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      nav__bar.classList.add('sticky__nav');
+    } else {
+      nav__bar.classList.remove('sticky__nav');
+    }
+  });
+};
+
+let options = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0,
+};
+
+let observer = new IntersectionObserver(callBack, options);
+
+observer.observe(header);

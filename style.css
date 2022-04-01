@@ -46,11 +46,6 @@ body {
   z-index: 5;
 }
 
-.section-break {
-  width: 100%;
-  height: 1px;
-  background-color: rgb(211, 207, 207);
-}
 .hidden {
   opacity: 0;
 }
@@ -62,6 +57,10 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.section {
+  border-top: 1px solid #ddd;
 }
 
 /* NAVBAR */
@@ -504,4 +503,5 @@ h6 {
 .sticky__nav {
   position: fixed;
   opacity: 0.8;
+  height: 8rem;
 }
