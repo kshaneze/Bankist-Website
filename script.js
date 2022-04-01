@@ -25,7 +25,6 @@ const mouseHandler = function (e) {
 };
 
 nav__bar.addEventListener('mouseover', mouseHandler.bind(0.5));
-
 // This function just brings everything back to normal as soon as we leave navbar
 nav__bar.addEventListener('mouseout', mouseHandler.bind(1));
 
@@ -46,22 +45,18 @@ links.forEach(link => {
 
 const header = document.querySelector('.section__header');
 
-let callBack = function (entries, observer) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) {
-      nav__bar.classList.add('sticky__nav');
-    } else {
-      nav__bar.classList.remove('sticky__nav');
-    }
-  });
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) nav__bar.classList.add('sticky__nav');
+  else nav__bar.classList.remove('sticky__nav');
 };
 
-let options = {
+const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
-  rootMargin: '0px',
   threshold: 0,
-};
+  rootMargin: `-90px`,
+});
 
-let observer = new IntersectionObserver(callBack, options);
-
-observer.observe(header);
+headerObserver.observe(header);
