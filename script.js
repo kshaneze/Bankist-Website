@@ -105,3 +105,41 @@ tabContainer.addEventListener('click', function (e) {
     .querySelector(`.box__content--${clicked.getAttribute('id')}`)
     .classList.remove('hidden');
 });
+
+// Scroll components
+
+const sliderBtnRight = document.querySelector('.slider__btn--right');
+const sliderBtnLeft = document.querySelector('.slider__btn--left');
+
+const slides = document.querySelectorAll('.slides');
+
+let maxSlides = slides.length;
+let currentSlide = 0;
+
+const gotoSlide = function (slide) {
+  slides.forEach((el, i) => {
+    el.style.transform = `translateX(${80 * (i - slide)}rem)`;
+  });
+};
+gotoSlide(0);
+
+const rightSlide = function () {
+  if (currentSlide === maxSlides - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  gotoSlide(currentSlide);
+};
+
+const leftSlide = function () {
+  if (currentSlide === 0) {
+    currentSlide = maxSlides - 1;
+  } else {
+    currentSlide--;
+  }
+  gotoSlide(currentSlide);
+};
+
+sliderBtnRight.addEventListener('click', rightSlide);
+sliderBtnLeft.addEventListener('click', leftSlide);

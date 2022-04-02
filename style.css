@@ -21,6 +21,7 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body {
@@ -380,15 +381,10 @@ p {
   margin: auto;
   margin-top: 6rem;
   margin-bottom: 18rem;
+
   position: relative;
 }
-.scrolling__container--1 {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  padding: 0 9rem;
-  margin-top: 10rem;
-}
+
 .testimonial {
   font-size: 1.7rem;
   color: rgb(61, 61, 61);
@@ -405,6 +401,13 @@ p {
   font-family: inherit;
   color: var(--color-primary);
   z-index: 5;
+}
+
+.scrolling__container--1 {
+  margin-top: 3rem;
+  width: 80rem;
+  overflow: hidden;
+  position: relative;
 }
 
 .scrolling__container--1 > h4 {
@@ -436,19 +439,27 @@ h6 {
   border-radius: 50%;
   position: relative;
 }
+
+.slides {
+  margin: 0 5rem 0rem 2rem;
+  padding: 0 5rem;
+  transition: transform 1s;
+}
 .slide1 {
   position: relative;
 }
 
 .slide2 {
   position: absolute;
-  top: 3.2rem;
-  left: 9rem;
+  top: 0;
+  left: 0;
+  transform: translateX(80rem);
 }
 .slide3 {
   position: absolute;
-  top: 3.2rem;
-  left: 9rem;
+  top: 0;
+  left: 0;
+  transform: translateX(160rem);
 }
 
 .slider__btn {
@@ -459,16 +470,17 @@ h6 {
   font-size: 3.5rem;
   position: relative;
   cursor: pointer;
+  background-color: white;
 }
 
 .slider__btn--left {
-  left: -17rem;
-  top: -27rem;
+  left: -7rem;
+  top: -23rem;
 }
 
 .slider__btn--right {
   left: 67rem;
-  top: -33rem;
+  top: -23rem;
 }
 
 .dots__container {
