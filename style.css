@@ -306,6 +306,38 @@ p {
   width: 2.7rem;
 }
 
+.svg__div--green {
+  background-color: var(--color-primary-opacity);
+  display: flex;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg__div--green > div {
+  fill: var(--color-primary);
+  height: 2.7rem;
+  width: 2.7rem;
+}
+.svg__div--red {
+  background-color: var(--color-tertiary-opacity);
+  display: flex;
+  width: 7rem;
+  height: 7rem;
+
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.svg__div--red > svg {
+  fill: var(--color-tertiary);
+  height: 2.7rem;
+  width: 2.7rem;
+}
+
 .svg__text-wraper {
   display: flex;
   justify-content: center;

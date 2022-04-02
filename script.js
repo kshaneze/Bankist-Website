@@ -63,23 +63,45 @@ headerObserver.observe(header);
 // Tabbed components
 
 const tabContainer = document.querySelector('.content__box-container');
-
+// Selecting whole  Box Container and adding eventListener to it
 tabContainer.addEventListener('click', function (e) {
   e.preventDefault();
 
+  // Then with closest method search for closest button element
   const clickButton = e.target.closest('.btn');
 
+  // If click event is not element with class btn, do nothing (return);
+  if (!clickButton) return;
   const clicked = e.target;
 
+  // Selecting clicked button (all of them)
   const buttons = clicked
     .closest('.content__box-buttons')
     .querySelectorAll('.btn');
 
+  // In this forEach method
   buttons.forEach(button => {
+    // If click event is on one of these 3 buttons, add active-box class only to clicked button
     if (clicked === button) {
       button.classList.add('active-box');
     } else {
+      // And for other buttons remove active-box class
       button.classList.remove('active-box');
     }
   });
+
+  // Selecting all text-box containers
+  const boxes = document.querySelectorAll('.text-box');
+
+  // ForEach box add hidden class
+  boxes.forEach(box => {
+    box.classList.add('hidden');
+  });
+
+  // In this step the right text container has to be selected, in order to display appropriate content for clicked button
+  // This is done with selection of box__contnet class (they have 1, 2, 3 on the end of class) and buttons with id  1 2 3
+  // We Select .box__content--(and then add number to it, equal to clicked button id)${1, 2, 3}
+  document
+    .querySelector(`.box__content--${clicked.getAttribute('id')}`)
+    .classList.remove('hidden');
 });
