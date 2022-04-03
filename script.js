@@ -110,12 +110,41 @@ tabContainer.addEventListener('click', function (e) {
 
 const sliderBtnRight = document.querySelector('.slider__btn--right');
 const sliderBtnLeft = document.querySelector('.slider__btn--left');
-
 const slides = document.querySelectorAll('.slides');
 
 let maxSlides = slides.length;
 let currentSlide = 0;
 
+// Dots
+const dotsContainer = document.querySelector('.dots__container');
+
+// Create dots
+const createDots = function () {
+  slides.forEach((_, i) => {
+    dotsContainer.insertAdjacentHTML(
+      'beforeend',
+      `<button class="dots" data-slide="${i}"></button>`
+    );
+  });
+};
+createDots();
+
+// Activate acitve class on current dot
+const activateDot = function (slide) {
+  const dots = document.querySelectorAll('.dots');
+  dots.forEach(dot => {
+    dot.classList.remove('active__dot');
+  });
+
+  document
+    .querySelector(`.dots[data-slide="${slide}"]`)
+    .classList.add('active__dot');
+};
+activateDot(0);
+
+//
+
+// Implementing sliding functionality
 const gotoSlide = function (slide) {
   slides.forEach((el, i) => {
     el.style.transform = `translateX(${80 * (i - slide)}rem)`;
@@ -130,6 +159,7 @@ const rightSlide = function () {
     currentSlide++;
   }
   gotoSlide(currentSlide);
+  activateDot(currentSlide);
 };
 
 const leftSlide = function () {
@@ -139,7 +169,24 @@ const leftSlide = function () {
     currentSlide--;
   }
   gotoSlide(currentSlide);
+  activateDot(currentSlide);
 };
 
 sliderBtnRight.addEventListener('click', rightSlide);
 sliderBtnLeft.addEventListener('click', leftSlide);
+
+// Adding functionality on keys
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'ArrowLeft') {
+    leftSlide();
+  }
+  if (event.key === 'ArrowRight') rightSlide();
+});
+
+dotsContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('dots')) {
+    const slide = e.target.dataset.slide;
+    gotoSlide(slide);
+    activateDot(slide);
+  }
+});

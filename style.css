@@ -484,16 +484,22 @@ h6 {
 }
 
 .dots__container {
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dots {
   width: 10px;
   height: 10px;
   border: none;
   border-radius: 50%;
-  background-color: #37383d;
+  background-color: #bdbec1;
   margin-right: 1.8rem;
   cursor: pointer;
+}
+
+.active__dot {
+  background-color: #5e5e60;
 }
 
 /* SIGNUP */
