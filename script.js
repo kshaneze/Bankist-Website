@@ -1,4 +1,12 @@
 'use strict';
+// Scroll on button
+const btnLearnMore = document.querySelector('.btn__learn-more');
+
+const scrollToSection = function () {
+  const section = document.getElementById('section-1');
+  section.scrollIntoView({ behavior: 'smooth' });
+};
+btnLearnMore.addEventListener('click', scrollToSection);
 
 // Bubbling event
 const navbar__list = document.querySelectorAll('.navbar__list');
@@ -190,3 +198,43 @@ dotsContainer.addEventListener('click', function (e) {
     activateDot(slide);
   }
 });
+
+// Reveal sections on scroll
+
+const sections = document.querySelectorAll('.section');
+
+const revealSections = function (entries, observe) {
+  const [entry] = entries;
+
+  if (entry.isIntersecting) {
+    entry.target.classList.remove('section-hidden');
+  } else {
+    return;
+  }
+  observe.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSections, {
+  root: null,
+  threshold: 0.15,
+});
+
+sections.forEach(section => {
+  section.classList.add('section-hidden');
+  sectionObserver.observe(section);
+});
+
+// const stickyNav = function (entries) {
+//   const [entry] = entries;
+
+//   if (!entry.isIntersecting) nav__bar.classList.add('sticky__nav');
+//   else nav__bar.classList.remove('sticky__nav');
+// };
+
+// const headerObserver = new IntersectionObserver(stickyNav, {
+//   root: null,
+//   threshold: 0,
+//   rootMargin: `-90px`,
+// });
+
+// headerObserver.observe(header);
