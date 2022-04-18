@@ -166,6 +166,13 @@ h4 {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 1234px) {
+  .section__header {
+    padding: 0 5rem;
+    grid-gap: 5rem;
+  }
+}
+
 /* FEATURES */
 
 .section__features-title {
